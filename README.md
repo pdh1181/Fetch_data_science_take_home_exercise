@@ -29,7 +29,7 @@ The Offer Search Tool is a web application built with Flask that allows users to
   ```bash
   python3 app.py
   ```
-2. Open your web browser and go to http://localhost:5000 to access the application.
+2. Open your web browser and go to [http://localhost:5000](http://127.0.0.1:5000/) to access the application.
 3. Enter your search query and click the search button to view the relevant offers and their similarity scores.
 
 - The exercise involved generating a dataset (**data.csv**) using information from **brand_category.csv**, **categories.csv**, and **offer_retailer.csv** files. The detailed process of data generation can be found in the **data_processing.ipynb** notebook.
