@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offer Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+        }
+        form {
+            text-align: center;
+            margin: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+        h2 {
+            text-align: center;
+        }
+        .result-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .result-box {
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 10px;
+            background-color: #fff;
+        }
+        h3 {
+            color: #333;
+        }
+        p {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fetch</h1>
+    <form method="post">
+        <input type="text" id="query" name="query" placeholder="Search by product, brand or Category">
+        <input type="submit" value="Search">
+    </form>
+
+    {% if not results.empty %}
+        <h2>Offers</h2>
+        <div class="result-container">
+            {% for index, row in results.iterrows() %}
+            <div class="result-box">
+                <h3>{{ row['OFFER'] }}</h3>
+                <p>@ {{row['RETAILER']}}</p>
+                <p>Similarity Score: {{ "{:.2f}".format(row['SIMILARITY_SCORE'] * 100) }}%</p>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <h2>No offers found.</h2>
+    {% endif %}
+</body>
+</html>
